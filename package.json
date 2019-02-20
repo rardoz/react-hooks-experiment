@@ -1,0 +1,23 @@
+{
+  "name": "react-hooks-experiment",
+  "version": "1.0.0",
+  "description": "An experiment with react hooks",
+  "main": "app/index.js",
+  "scripts": {
+    "test": "echo no tests yet",
+    "start": "parcel app/index.html"
+  },
+  "author": "Robert Greene",
+  "license": "ECL-2.0",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "parcel-bundler": "^1.11.0"
+  },
+  "dependencies": {
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
+    "react-router-dom": "^4.3.1"
+  }
+}
