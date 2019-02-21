@@ -1,1 +1,1 @@
-export { default as LazyLoader } from './component'
+export { default as lazyLoader } from './component'

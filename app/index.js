@@ -1,32 +1,24 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Route, Switch, BrowserRouter } from 'react-router-dom'
+import { lazyLoader } from './components/lazy-loader'
 
-const NoMatch = ({ location }) => (
-  <div>
-    <h3>
-      No match for <code>{location.pathname}</code>
-    </h3>
-  </div>
-)
-const Lazyhome = React.lazy(() => import('./pages/home'))
-
-const withSuspense = Component => {
-  return props => (
-    <React.Suspense fallback={<div>Loading...</div>}>
-      <Component {...props} />
-    </React.Suspense>
-  )
-}
+const LazyHome = React.lazy(() => import('./pages/home'))
+const LazyError = React.lazy(() => import('./pages/error'))
+const LazyLogin = React.lazy(() => import('./pages/login'))
+const LazyLogout = React.lazy(() => import('./pages/logout'))
+const LazyProfile = React.lazy(() => import('./pages/profile'))
 
 class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
         <Switch>
-          <Route path="/" exact render={withSuspense(Lazyhome)} />
-          <Route path="/test" exact render={() => <div> Test 2 </div>} />
-          <Route component={NoMatch} />
+          <Route path="/" exact render={lazyLoader(LazyHome)} />
+          <Route path="/login" exact render={lazyLoader(LazyLogin)} />
+          <Route path="/logout" exact render={lazyLoader(LazyLogout)} />
+          <Route path="/profile" exact render={lazyLoader(LazyProfile)} />
+          <Route component={lazyLoader(LazyError)} />
         </Switch>
       </BrowserRouter>
     )
