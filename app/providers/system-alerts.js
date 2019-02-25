@@ -55,8 +55,13 @@ const StateProvider = props => {
       value={{
         state: items,
         dispatch: {
-          displayAlert: notification =>
-            dispatch(displayAlertAction(notification)),
+          displayAlert: notification => {
+            const alert = displayAlertAction(notification)
+            dispatch(alert)
+            setTimeout(() => {
+              dispatch(removeAlertAction(alert.notification.key))
+            }, 3000)
+          },
           removeAlert: key => dispatch(removeAlertAction(key))
         }
       }}

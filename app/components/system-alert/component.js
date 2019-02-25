@@ -5,37 +5,8 @@ const timeouts = []
 
 export default () => {
   const alerts = useContext(SystemAlertContext)
-  const [displayed, useDisplayed] = useState([])
 
-  const storeDisplayed = key => {
-    useDisplayed([...displayed, key])
-  }
-
-  const killDisplays = []
-  alerts.state.notifications.forEach(notification => {
-    if (displayed.indexOf(notification.key) > -1) return
-    storeDisplayed(notification.key)
-    killDisplays.push(notification.key)
-  })
-
-  timeouts.push(
-    setTimeout(() => {
-      killDisplays.forEach(key => alerts.dispatch.removeAlert(key))
-      useDisplayed(displayed.filter(key => !killDisplays.includes(key)))
-    }, 3000)
-  )
-
-  useEffect(
-    () => {},
-    () => {
-      timeouts.forEach(timeout => clearTimeout(timeout))
-    }
-  )
-
-  return alerts.state.notifications.map(
-    notification =>
-      displayed.find(key => key === notification.key) && (
-        <div key={notification.key}>{notification.message}</div>
-      )
-  )
+  return alerts.state.notifications.map(notification => (
+    <div key={notification.key}>{notification.message}</div>
+  ))
 }
