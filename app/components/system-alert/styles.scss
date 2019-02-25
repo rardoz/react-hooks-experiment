@@ -13,6 +13,10 @@
   font-family: Helvetica, Arial, sans-serif;
   animation: system-alert-slide-right 1s ease-in-out forwards;
   padding: 15px;
+
+  &.error {
+    background: red;
+  }
 }
 
 @keyframes system-alert-slide-right {
