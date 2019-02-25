@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Route, Switch, BrowserRouter } from 'react-router-dom'
 import { lazyLoader } from './components/lazy-loader'
+import './styles.scss'
 
 const LazyHome = React.lazy(() => import('./pages/home'))
 const LazyError = React.lazy(() => import('./pages/error'))
