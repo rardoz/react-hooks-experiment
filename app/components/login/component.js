@@ -1,5 +1,4 @@
 import React, { useContext, useRef, useState } from 'react'
-import { Redirect } from 'react-router-dom'
 import { SystemAlertContext } from '../../providers/system-alerts'
 import './styles.scss'
 
@@ -8,6 +7,7 @@ export default () => {
   const formRef = useRef()
   const [isSubmitting, useDisable] = useState(false)
 
+  //simulate a fake request
   const onSubmit = e => {
     e.preventDefault()
     const formData = new FormData(formRef.current)
