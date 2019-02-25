@@ -1,21 +1,21 @@
-import React from 'react'
+import React, { Suspense, Fragment } from 'react'
 import { Navbar } from '../navbar'
 import './styles.scss'
 
 const withSuspense = Component => {
   return props => (
-    <React.Suspense
+    <Suspense
       fallback={
-        <div>
+        <Fragment>
           <Navbar />
           <div className="page-loading" />
-        </div>
+        </Fragment>
       }
     >
       <Navbar />
       <div className="page-loading" />
       <Component {...props} />
-    </React.Suspense>
+    </Suspense>
   )
 }
 
