@@ -45,7 +45,7 @@ export default () => {
           <fieldset>
             <label>Email</label>
             <input
-              autoComplete={false}
+              autoComplete="off"
               disabled={isSubmitting}
               type="email"
               name="email"
@@ -56,7 +56,7 @@ export default () => {
           <fieldset>
             <label>Password</label>
             <input
-              autoComplete={false}
+              autoComplete="off"
               disabled={isSubmitting}
               type="password"
               name="password"
