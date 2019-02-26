@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { shallow, mount } from 'enzyme'
+import { mount } from 'enzyme'
 import { SystemAlert } from './index'
 import AlertProvider, {
   SystemAlertContext
@@ -17,11 +17,9 @@ const SetupContext = props => {
 
 function setup(props = {}) {
   return mount(
-    <div>
-      <AlertProvider>
-        <SetupContext message={props.message} />
-      </AlertProvider>
-    </div>
+    <AlertProvider>
+      <SetupContext message={props.message} />
+    </AlertProvider>
   )
 }
 
@@ -34,8 +32,9 @@ describe('System Alert', () => {
 
   it('Should have an alert', () => {
     wrapper = setup({ message: 'test', type: 'success' })
+
     return new Promise((resolve, reject) => {
-      setTimeout(resolve, 1000)
+      setTimeout(resolve, 500)
     }).then(() => {
       return expect(wrapper.text()).toBe('test')
     })
