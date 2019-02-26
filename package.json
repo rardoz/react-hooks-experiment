@@ -4,7 +4,9 @@
   "description": "An experiment with react hooks",
   "main": "app/index.js",
   "scripts": {
-    "test": "echo no tests yet",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage --colors",
     "start": "parcel app/index.html",
     "lint": "prettier --single-quote  --no-semi --write \"app/**/*.{js,css}\""
   },
@@ -28,6 +30,9 @@
     "@babel/plugin-syntax-import-meta": "^7.2.0",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
+    "babel-jest": "^24.1.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.9.1",
     "husky": "^1.3.1",
     "parcel-bundler": "^1.11.0",
     "prettier": "^1.16.4",
