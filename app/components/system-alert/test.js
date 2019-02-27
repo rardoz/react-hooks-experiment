@@ -1,4 +1,5 @@
 // https://github.com/mpeyper/react-hooks-testing-library
+// enzyme does not support hooks yet
 
 import React, { useContext } from 'react'
 import { mount } from 'enzyme'
@@ -29,6 +30,7 @@ describe('System Alert', () => {
     const hook = renderHook(() => useContext(SystemAlertContext), {
       wrapper: Wrapper
     })
+
     const { dispatch } = hook.result.current
 
     act(() => {
