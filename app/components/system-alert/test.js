@@ -1,42 +1,42 @@
-import React, { useContext, useEffect } from 'react'
+// https://github.com/mpeyper/react-hooks-testing-library
+
+import React, { useContext } from 'react'
 import { mount } from 'enzyme'
 import { SystemAlert } from './index'
+import { renderHook, cleanup, act } from 'react-hooks-testing-library'
+
 import AlertProvider, {
   SystemAlertContext
 } from '../../providers/system-alerts'
 
-const SetupContext = props => {
-  const { dispatch } = useContext(SystemAlertContext)
-  useEffect(() => {
-    if (props.message)
-      dispatch.displayAlert({ message: props.message, type: 'success' })
-  }, [props])
-
-  return <SystemAlert />
-}
-
-function setup(props = {}) {
-  return mount(
+const Wrapper = ({ children }) => {
+  return (
     <AlertProvider>
-      <SetupContext message={props.message} />
+      {children}
+      <SystemAlert />
     </AlertProvider>
   )
 }
 
 describe('System Alert', () => {
-  let wrapper = setup()
+  afterEach(cleanup)
 
   it('Should not have any alerts', () => {
-    expect(wrapper.text()).toBe('')
+    expect(mount(<Wrapper />).text()).toBe('')
   })
 
   it('Should have an alert', () => {
-    wrapper = setup({ message: 'test', type: 'success' })
-
-    return new Promise((resolve, reject) => {
-      setTimeout(resolve, 500)
-    }).then(() => {
-      return expect(wrapper.text()).toBe('test')
+    const hook = renderHook(() => useContext(SystemAlertContext), {
+      wrapper: Wrapper
     })
+    const { dispatch } = hook.result.current
+
+    act(() => {
+      dispatch.displayAlert({ message: 'test', type: 'success' })
+    })
+
+    expect(
+      document.body.getElementsByClassName('system-alert')[0].textContent
+    ).toBe('test')
   })
 })

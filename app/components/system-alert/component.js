@@ -4,7 +4,6 @@ import './styles.scss'
 
 export default () => {
   const alerts = useContext(SystemAlertContext)
-
   return (
     <div className="system-alert-container">
       {alerts.state.notifications.map(notification => (
