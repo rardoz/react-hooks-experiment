@@ -53,6 +53,7 @@
     "compression": "^1.7.3",
     "express": "^4.16.4",
     "hella-bomb-react-context": "^1.0.0",
+    "hookrouter": "^1.0.3-beta",
     "jest": "^24.1.0",
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",
@@ -60,6 +61,6 @@
     "react-dom": "^16.8.2",
     "react-helmet": "^5.2.0",
     "react-imported-component": "^5.5.3",
-    "react-router-dom": "^4.4.0-beta.6"
+    "universal-location-middleware": "^1.0.16"
   }
 }

@@ -1,7 +1,6 @@
 import { rehydrateMarks } from 'react-imported-component'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter } from 'react-router-dom'
 import importedComponents from './imported' // eslint-disable-line
 import AppComponent from './app'
 
@@ -9,11 +8,7 @@ const element = document.getElementById('app')
 
 class App extends React.Component {
   render() {
-    return (
-      <BrowserRouter>
-        <AppComponent />
-      </BrowserRouter>
-    )
+    return <AppComponent />
   }
 }
 
